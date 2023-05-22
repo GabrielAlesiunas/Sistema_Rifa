@@ -5,7 +5,7 @@ class Rifa_tags {
   public int  $fk_Tags_id;
   public string $creation_time;
 
-  public function __construct($c=0, $fk_Rifa_id="", $fk_Tags_id="", $creation_time="") {
+  public function __construct($c=0, $fk_Rifa_id=0, $fk_Tags_id=0, $creation_time="") {
     if($c){
       $this->fk_Rifa_id = $fk_Rifa_id;
       $this->fk_Tags_id = $fk_Tags_id;

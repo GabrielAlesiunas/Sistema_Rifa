@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 09-Maio-2023 às 12:31
--- Versão do servidor: 8.0.31
--- versão do PHP: 8.0.26
+-- Tempo de geração: 22-Maio-2023 às 16:33
+-- Versão do servidor: 8.0.27
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -131,7 +131,14 @@ CREATE TABLE IF NOT EXISTS `rifa` (
   `modification_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `FK_Rifa_2` (`fk_Usuario_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `rifa`
+--
+
+INSERT INTO `rifa` (`id`, `titulo`, `descricao`, `quant_num`, `valor`, `data_termino`, `tempo_reserva`, `fk_Usuario_id`, `creation_time`, `modification_time`) VALUES
+(1, 'rifa', 'a', 1, 12, '2023-06-22', 1, 137, '2023-05-22 16:11:18', '2023-05-22 16:12:09');
 
 -- --------------------------------------------------------
 
@@ -148,6 +155,13 @@ CREATE TABLE IF NOT EXISTS `rifa_tags` (
   KEY `FK_Rifa_Tags_2` (`fk_Tags_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Extraindo dados da tabela `rifa_tags`
+--
+
+INSERT INTO `rifa_tags` (`fk_Rifa_id`, `fk_Tags_id`, `creation_time`) VALUES
+(1, 1, '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -161,7 +175,14 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modification_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `tags`
+--
+
+INSERT INTO `tags` (`id`, `nome`, `creation_time`, `modification_time`) VALUES
+(1, 'tags', '2023-05-22 16:11:40', '2023-05-22 16:12:04');
 
 -- --------------------------------------------------------
 
@@ -184,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `cpf` (`cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -207,7 +228,8 @@ INSERT INTO `usuario` (`id`, `email`, `senha`, `nome`, `foto`, `tel`, `endereco`
 (142, 'leonardocarvalho@hotmail.com', 'senha456', 'Leonardo Carvalho', 'foto14.jpg', '11754321098', 'Rua N, 3031', 58789012345, '2023-04-18 12:04:16', '2023-04-18 12:04:16'),
 (143, 'camilasantos@yahoo.com', 'senha789', 'Camila Santos', 'foto15.jpg', '11743210987', 'Rua O, 3233', 67890123466, '2023-04-18 12:04:16', '2023-04-18 12:04:16'),
 (144, 'viniciusoliveira@gmail.com', 'senha123', 'Vinicius Oliveira', 'foto16.jpg', '11732109876', 'Rua P, 3435', 789012345, '2023-04-18 12:04:16', '2023-04-18 12:04:16'),
-(163, 'camargoliveira@gmail.com', '3256723456345', 'ELITON-PC', 'gsdqqqqqqqqqgdf.png', '14996874866', 'Rua Joaquim Antunes de Souza', 45235835875, '2023-05-02 14:03:22', '2023-05-02 14:03:22');
+(163, 'camargoliveira@gmail.com', '3256723456345', 'ELITON-PC', 'gsdqqqqqqqqqgdf.png', '14996874866', 'Rua Joaquim Antunes de Souza', 45235835875, '2023-05-02 14:03:22', '2023-05-02 14:03:22'),
+(164, 'a@gmail.com', '123', 'a', 'a', '1234321', 'rua', 5020, '2023-05-22 16:29:51', '2023-05-22 16:29:51');
 
 --
 -- Restrições para despejos de tabelas

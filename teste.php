@@ -47,7 +47,7 @@
         $cpf = $_POST['cpf'];
     
       // cria um novo objeto Usuario com os dados do formulário
-      $usuario = new Usuario(0, $email, $senha, $nome, $foto, $tel, $endereco, $cpf, "", "");
+      $usuario = new Usuario(true, 0, $email, $senha, $nome, $foto, $tel, $endereco, $cpf, "", "");
     
       var_dump($usuario);
 

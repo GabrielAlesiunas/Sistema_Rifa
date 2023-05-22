@@ -27,7 +27,7 @@
         $fk_Tags_id = $_POST['fk_Tags_id'];
 
       // cria um novo objeto Rifa_tags com os dados do formulário
-      $rifa_tags = new Rifa_tags($fk_Rifa_id, $fk_Tags_id, 'CURRENT_TIMESTAMP');
+      $rifa_tags = new Rifa_tags(true, $fk_Rifa_id, $fk_Tags_id, "CURRENT_TIMESTAMP");
     
       var_dump($rifa_tags);
 

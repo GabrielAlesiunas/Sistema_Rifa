@@ -25,11 +25,11 @@ class Rifa_tagsDAO
 
     public function insert(Rifa_tags $rifa_tags):bool
     {
-        $stmt = $this->pdo->prepare("INSERT INTO Rifa_tags (fk_Rifa_id, fk_Tags_id) VALUES (:fk_Rifa_id, :fk_Tags_id)");
+        $stmt = $this->pdo->prepare("INSERT INTO Rifa_tags (fk_Rifa_id, fk_Tags_id, creation_time) VALUES (:fk_Rifa_id, :fk_Tags_id, :creation_time)");
         $dados = [
             'fk_Rifa_id' => $rifa_tags->getFk_Rifa_id(),
             'fk_Tags_id' => $rifa_tags->getFk_Tags_id(),
-            
+            'creation_time' => $rifa_tags->getCreationTime(),
         ];
         try {
             $stmt->execute($dados);

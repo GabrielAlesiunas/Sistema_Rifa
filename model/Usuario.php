@@ -15,7 +15,7 @@ class Usuario {
   public function __construct($c=0, $id=0, $email="", $senha="", $nome="", $foto="", $tel="", $endereco="", $cpf="", $creation_time="", $modification_time="") {
     if($c){
       $this->id = $id;
-      $this->email =  $email;
+      $this->email = $email;
       $this->senha = $senha;
       $this->nome = $nome;
       $this->foto = $foto;

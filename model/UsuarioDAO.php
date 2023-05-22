@@ -50,7 +50,7 @@ class UsuarioDAO
         try {
             if($stmt->execute(['id'=>$id])){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                return (new Usuario($row['id'], $row['email'], $row['senha'], $row['nome'], $row['foto'], $row['tel'], $row['endereco'], $row['cpf'], $row['creation_time'], $row['modification_time']));
+                return (new Usuario(true, $row['id'], $row['email'], $row['senha'], $row['nome'], $row['foto'], $row['tel'], $row['endereco'], $row['cpf'], $row['creation_time'], $row['modification_time']));
             }
             return false;   
 
