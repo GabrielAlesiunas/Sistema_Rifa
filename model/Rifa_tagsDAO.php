@@ -40,21 +40,21 @@ class Rifa_tagsDAO
         }
     }
 
-    public function selectById($fk_Rifa_id):bool
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM Rifa_tags WHERE Rifa_tags.fk_Rifa_id = :fk_Rifa_id");
-        try {
-            if($stmt->execute(['fk_Rifa_id'=>$fk_Rifa_id])){
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                return (new Rifa_tags(true, $row['fk_Rifa_id'], $row['fk_Tags_id'], $row['creation_time']));
-            }
-            return false;   
+    // public function selectById($fk_Rifa_id):bool
+    // {
+    //     $stmt = $this->pdo->prepare("SELECT * FROM Rifa_tags");
+    //     try {
+    //         if($stmt->execute(['fk_Rifa_id'=>$fk_Rifa_id])){
+    //             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    //             return (new Rifa_tags(true, $row['fk_Rifa_id'], $row['fk_Tags_id'], $row['creation_time']));
+    //         }
+    //         return false;   
 
-        } catch (\PDOException $e) {
-            $this->erro = 'Erro ao selecionar usuário: ' . $e->getMessage();
-            return false;
-        }
-    }
+    //     } catch (\PDOException $e) {
+    //         $this->erro = 'Erro ao selecionar usuário: ' . $e->getMessage();
+    //         return false;
+    //     }
+    // }
 
     public function listarTodos(){
         $cmdSql = "SELECT * FROM rifa_tags";
@@ -103,16 +103,16 @@ class Rifa_tagsDAO
     //     }
     // }
 
-    // public function deleteById($id)
-    // {
-    //     $stmt = $this->pdo->prepare("DELETE FROM Usuario WHERE id = ?");
-    //     try {
-    //         $stmt->execute([$id]);
-    //         return $stmt->rowCount();
-    //     } catch (PDOException $e) {
-    //         throw new Exception('Erro ao excluir usuário: ' . $e->getMessage());
-    //     }
-    // }
+    public function deleteById($id)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM rifa_tags WHERE rifa_tags.fk_Rifa_id = ?");
+        try {
+            $stmt->execute([$id]);
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao excluir rifa_tags: ' . $e->getMessage());
+        }
+    }
 
     public function __destruct()
     {
